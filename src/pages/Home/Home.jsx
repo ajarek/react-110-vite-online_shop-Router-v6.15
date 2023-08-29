@@ -1,36 +1,72 @@
-import './Home.css'
-import { useFetch } from './../../helper/useFetch'
+import { useEffect, useState } from 'react'
 import Card from '../../components/Card/Card'
-import { ErrorMessage } from './../../components/ErrorMessage/ErrorMessage';
-import { FullPageLayout } from './../../components/FullPageLayout/FullPageLayout';
-import { Loading } from './../../components/Loading/Loading';
+import { ErrorMessage } from './../../components/ErrorMessage/ErrorMessage'
+import { FullPageLayout } from './../../components/FullPageLayout/FullPageLayout'
+import { Loading } from './../../components/Loading/Loading'
+import './Home.css'
 
 const Home = () => {
-  const { data, pending, error } = useFetch('https://fakestoreapi.com/products')
-  console.log(data)
+  const [items, setItems] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
+
+  useEffect(() => {
+    fetch('https://fakestoreapi.com/products')
+      .then((response) => response.json())
+      .then((data) => setItems(data.map((item) => ({ ...item, count: 1 }))))
+      .catch((error) => setError(error))
+      .finally(setLoading(false))
+  }, [])
+
+  const handleIncrement = (itemId) => {
+    setItems((prevItems) =>
+      prevItems.map((item) => {
+        if (item.id === itemId) {
+          return { ...item, count: item.count + 1 }
+        }
+        return item
+      })
+    )
+  }
+  const handleDecrement = (itemId) => {
+    setItems((prevItems) =>
+      prevItems.map((item) => {
+        if (item.id === itemId) {
+          return { ...item, count: item.count <= 1 ? 1 : item.count - 1 }
+        }
+        return item
+      })
+    )
+  }
+
   return (
     <div className='home'>
-      {pending && <FullPageLayout>
-        <Loading/>
-        </FullPageLayout>}
-      {error && <FullPageLayout>
-        <ErrorMessage error={error} />
-        </FullPageLayout> }
-       
+      {loading && (
+        <FullPageLayout>
+          <Loading />
+        </FullPageLayout>
+      )}
+      {error && (
+        <FullPageLayout>
+          <ErrorMessage error={error} />
+        </FullPageLayout>
+      )}
+
       <h1>Zestaw Produktów</h1>
       <div className='home-wrapper'>
-        {data &&
-          data.map((product) => (
+        {items &&
+          items.map((item) => (
             <Card
-              key={product.id}
-              image={product.image}
-              title={product.title}
-              price={product.price}
+              key={item.id}
+              image={item.image}
+              title={item.title}
+              price={item.price}
+              quantity={item.count}
+              handleIncrement={() => handleIncrement(item.id)}
+              handleDecrement={() => handleDecrement(item.id)}
             />
           ))}
       </div>
-
-      
     </div>
   )
 }
