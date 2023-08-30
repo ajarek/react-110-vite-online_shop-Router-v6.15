@@ -12,6 +12,14 @@ const Cart = () => {
       setData(storedData)
     }
   }, []);
+
+  const deleteCartItem = (id) => {
+    const filteredData = Object.values(data).filter((el) => el.id !== id)
+    setData(filteredData)
+    saveStorageSingle(filteredData, 'carts')
+   
+  }
+
   return (
     <div className='cart'>
       <h1>Twój Koszyk</h1>
