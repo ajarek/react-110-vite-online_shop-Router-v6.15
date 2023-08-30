@@ -3,6 +3,7 @@ import Card from '../../components/Card/Card'
 import { ErrorMessage } from './../../components/ErrorMessage/ErrorMessage'
 import { FullPageLayout } from './../../components/FullPageLayout/FullPageLayout'
 import { Loading } from './../../components/Loading/Loading'
+import { saveStorage, saveStorageSingle, fetchStorage, deleteStorage } from './../../helpers/localStorage'
 import './Home.css'
 
 const Home = () => {
@@ -38,6 +39,11 @@ const Home = () => {
       })
     )
   }
+  const handleAddToCart = (Id) => {
+    const itemCart = items.find((item) => item.id === Id)
+    saveStorage(itemCart, 'carts')
+    alert('Produkt został dodany do koszyka')
+  }
 
   return (
     <div className='home'>
@@ -64,6 +70,7 @@ const Home = () => {
               quantity={item.count}
               handleIncrement={() => handleIncrement(item.id)}
               handleDecrement={() => handleDecrement(item.id)}
+              handleAddToCart={()=> handleAddToCart(item.id)}
             />
           ))}
       </div>
