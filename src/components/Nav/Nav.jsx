@@ -28,25 +28,7 @@ const Nav = () => {
         </Link>
         
       </ul>
-      <div className='hamburger'>
-        <Hamburger
-          size={30}
-          duration={0.3}
-          distance='md'
-          color={isOpen ? '#ff3f34' : '#1e272e'}
-          easing='ease-in'
-          rounded
-          label='Show menu'
-          onToggle={(toggled) => {
-            setOpen(true)
-            if (toggled) {
-              // open a menu
-            } else {
-              setOpen(false)
-            }
-          }}
-        />
-      </div>
+     
     </nav>
   )
 }

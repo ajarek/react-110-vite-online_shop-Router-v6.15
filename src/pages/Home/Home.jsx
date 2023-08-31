@@ -40,6 +40,16 @@ const Home = () => {
     )
   }
   const handleAddToCart = (Id) => {
+    const storeData=fetchStorage('carts')
+    const duble=storeData.find(el=>el.id===Id)
+    if(duble){
+  
+        alert('Produkt został juš dodany do koszyka')
+        return
+      }
+  
+     
+    
     const itemCart = items.find((item) => item.id === Id)
     saveStorage(itemCart, 'carts')
     alert('Produkt został dodany do koszyka')
