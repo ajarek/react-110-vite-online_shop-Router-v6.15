@@ -29,9 +29,10 @@ const router = createBrowserRouter([
   },
 ])
 function App() {
+  const [dataLength, setDataLength] = useState(0) 
   return (
     <div className='App'>
-      <AppContext.Provider value={{}}>
+      <AppContext.Provider value={{dataLength, setDataLength}}>
         <RouterProvider router={router} />
       </AppContext.Provider>
     </div>

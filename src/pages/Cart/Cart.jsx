@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useContext } from 'react'
+import { AppContext } from '../../App'
 import { saveStorage, saveStorageSingle, fetchStorage, deleteStorage } from './../../helpers/localStorage'
 import { useNavigate } from 'react-router-dom'
 import './Cart.css'
 
 const Cart = () => {
   const [data, setData] = useState({});
+  const { dataLength, setDataLength } = useContext(AppContext)
   const navigate = useNavigate();
   useEffect(() => {
     const storedData = fetchStorage('carts');
@@ -17,7 +19,7 @@ const Cart = () => {
     const filteredData = Object.values(data).filter((el) => el.id !== id)
     setData(filteredData)
     saveStorageSingle(filteredData, 'carts')
-   
+    setDataLength(filteredData.length)
   }
 
   return (
@@ -48,7 +50,7 @@ const Cart = () => {
         ))}
   </tbody>
       </table>
-      <button onClick={() => {deleteStorage('carts');navigate('/')}}>Usuń Koszyk</button>
+      <button onClick={() => {deleteStorage('carts');setDataLength(0); navigate('/')}}>Usuń Koszyk</button>
     </div>
   )
 }

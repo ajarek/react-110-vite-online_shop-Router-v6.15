@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useState, useEffect,useContext } from 'react'
+import { AppContext } from '../../App'
 import Card from '../../components/Card/Card'
 import { ErrorMessage } from './../../components/ErrorMessage/ErrorMessage'
 import { FullPageLayout } from './../../components/FullPageLayout/FullPageLayout'
@@ -10,6 +11,7 @@ const Home = () => {
   const [items, setItems] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
+  const { dataLength, setDataLength } = useContext(AppContext)
 
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
@@ -41,18 +43,17 @@ const Home = () => {
   }
   const handleAddToCart = (Id) => {
     const storeData=fetchStorage('carts')
-    const duble=storeData.find(el=>el.id===Id)
+    const duble=storeData?.find(el=>el.id===Id)
     if(duble){
-  
         alert('Produkt został juš dodany do koszyka')
         return
-      }
-  
-     
-    
+      } 
     const itemCart = items.find((item) => item.id === Id)
     saveStorage(itemCart, 'carts')
     alert('Produkt został dodany do koszyka')
+    setDataLength(dataLength + 1)
+   
+  
   }
 
   return (
