@@ -51,6 +51,7 @@ const Cart = () => {
   </tbody>
       </table>
       <button onClick={() => {deleteStorage('carts');setDataLength(0); navigate('/')}}>Usuń Koszyk</button>
+      <div className="total">Do zapłaty:{Object.values(data).reduce((acc, el) => acc + (el.price*el.count), 0).toFixed(2)} PLN</div>
     </div>
   )
 }
