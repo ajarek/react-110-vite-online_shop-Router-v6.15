@@ -14,3 +14,35 @@
   
   border-bottom: 1px solid;
 }
+.cart-wrapper{
+  width: 100%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 0 32px;
+margin-top: 64px;
+}
+
+.cart-wrapper button,.empty-cart button{
+  height: 40px;
+  padding: 0 16px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 3px;
+  background-color: var(--green-light);
+  color: var(--white);
+  cursor: pointer;
+}
+.empty-cart button{
+  margin-top: 32px;
+}
+.btn-delete button{
+  background-color: var(--red-light);
+}
+
+.cart-wrapper button:hover,.empty-cart button:hover{
+  background-color: var(--green);
+}
+.btn-delete button:hover{
+  background-color: var(--red);
+}
