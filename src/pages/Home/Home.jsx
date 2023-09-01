@@ -1,5 +1,7 @@
 import { useState, useEffect,useContext } from 'react'
 import { AppContext } from '../../App'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Card from '../../components/Card/Card'
 import { ErrorMessage } from './../../components/ErrorMessage/ErrorMessage'
 import { FullPageLayout } from './../../components/FullPageLayout/FullPageLayout'
@@ -45,19 +47,55 @@ const Home = () => {
     const storeData=fetchStorage('carts')
     const duble=storeData?.find(el=>el.id===Id)
     if(duble){
-        alert('Produkt został juš dodany do koszyka')
+      notifyWarning()
         return
       } 
     const itemCart = items.find((item) => item.id === Id)
     saveStorage(itemCart, 'carts')
-    alert('Produkt został dodany do koszyka')
+    notifySuccess()
     setDataLength(dataLength + 1)
    
   
   }
-
+  const notifySuccess = () => {
+  toast.success('dodano do koszyka!', {
+    position: "top-center",
+    autoClose: 1000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    });
+  }
+  const notifyWarning = () => {
+    toast.warn('Produkt był już dodany do koszyka!', {
+      position: "top-center",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+    }
   return (
     <div className='home'>
+     <ToastContainer
+position="top-center"
+autoClose={1000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+/>
+
       {loading && (
         <FullPageLayout>
           <Loading />

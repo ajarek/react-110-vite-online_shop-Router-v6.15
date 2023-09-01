@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
 import { AppContext } from '../../App'
+import { MdDeleteForever } from 'react-icons/md'
 import {
   saveStorage,
   saveStorageSingle,
@@ -69,7 +70,7 @@ const Cart = () => {
                   <td>{el.price.toFixed(2)}</td>
                   <td>{(el.price * el.count).toFixed(2)}</td>
                   <td>
-                    <button onClick={() => deleteCartItem(el.id)}>🗑️</button>
+                    <button onClick={() => deleteCartItem(el.id)}><MdDeleteForever size={30} color='red'/></button>
                   </td>
                 </tr>
               ))}
