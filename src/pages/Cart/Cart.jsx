@@ -43,7 +43,7 @@ const Cart = () => {
         </div>
       ) : (
         <>
-          <h1>Twój Koszyk</h1>
+          <h1 className='cart-your'>Twój Koszyk</h1>
           <table>
             <thead>
               <tr>

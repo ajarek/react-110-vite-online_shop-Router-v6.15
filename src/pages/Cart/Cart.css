@@ -6,6 +6,9 @@
   align-items: center;
   padding:90px 50px 50px 50px;
 }
+.cart .cart-your{
+  margin-bottom: 32px;
+}
 .cart table{
   width: 100%;
 }
@@ -27,6 +30,9 @@ justify-content: space-between;
 align-items: center;
 padding: 0 32px;
 margin-top: 64px;
+}
+.empty-cart{
+  text-align: center;
 }
 
 .cart-wrapper button,.empty-cart button{
