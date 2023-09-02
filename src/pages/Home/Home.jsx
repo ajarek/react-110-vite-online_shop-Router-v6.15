@@ -8,17 +8,18 @@ import { FullPageLayout } from './../../components/FullPageLayout/FullPageLayout
 import { Loading } from './../../components/Loading/Loading'
 import { saveStorage, saveStorageSingle, fetchStorage, deleteStorage } from './../../helpers/localStorage'
 import './Home.css'
-
+const URL1='https://fakestoreapi.com/products'
+const URL2='https://dummyjson.com/products/'
 const Home = () => {
   const [items, setItems] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const { dataLength, setDataLength } = useContext(AppContext)
-
+  
   useEffect(() => {
-    fetch('https://fakestoreapi.com/products')
+    fetch(URL2)
       .then((response) => response.json())
-      .then((data) => setItems(data.map((item) => ({ ...item, count: 1 }))))
+      .then((data) => setItems(data.products.map((item) => ({ ...item, count: 1 }))))
       .catch((error) => setError(error))
       .finally(setLoading(false))
   }, [])
@@ -113,9 +114,9 @@ theme="light"
           items.map((item) => (
             <Card
               key={item.id}
-              image={item.image}
+              image={item.images[0]}
               title={item.title}
-              price={item.price}
+              price={item.price*4}
               quantity={item.count}
               handleIncrement={() => handleIncrement(item.id)}
               handleDecrement={() => handleDecrement(item.id)}

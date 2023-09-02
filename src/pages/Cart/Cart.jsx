@@ -60,7 +60,7 @@ const Cart = () => {
                 <tr key={el.id}>
                   <td>
                     <img
-                      src={el.image}
+                      src={el.images[0]}
                       alt='image'
                       height={'40px'}
                     />
