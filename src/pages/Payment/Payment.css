@@ -1,0 +1,13 @@
+.payment{
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding:90px 50px 50px 50px;
+}
+@media (max-width: 599px) {
+  .payment{
+    padding:90px 10px 10px 10px;
+  }
+}

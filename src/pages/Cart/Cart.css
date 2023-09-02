@@ -35,7 +35,7 @@ margin-top: 64px;
   text-align: center;
 }
 
-.cart-wrapper button,.empty-cart button{
+.cart-wrapper button,.empty-cart button, .btn-payment-link{
   height: 40px;
   padding: 0 16px;
   font-size: 1.2rem;
@@ -45,6 +45,16 @@ margin-top: 64px;
   color: var(--white);
   cursor: pointer;
 }
+.btn-payment span{
+  margin-left: 8px;
+}
+.btn-payment-link{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  height: 40px;
+}
 .empty-cart button{
   margin-top: 32px;
 }
@@ -52,7 +62,7 @@ margin-top: 64px;
   background-color: var(--red-light);
 }
 
-.cart-wrapper button:hover,.empty-cart button:hover{
+.cart-wrapper button:hover,.empty-cart button:hover,.btn-payment-link:hover{
   background-color: var(--green);
 }
 .btn-delete button:hover{

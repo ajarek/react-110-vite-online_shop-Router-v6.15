@@ -7,12 +7,12 @@ import {
   fetchStorage,
   deleteStorage,
 } from './../../helpers/localStorage'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './Cart.css'
 
 const Cart = () => {
   const [data, setData] = useState({})
-  const { dataLength, setDataLength } = useContext(AppContext)
+  const { dataLength, setDataLength, allPayment, setAllPayment } = useContext(AppContext)
   const navigate = useNavigate()
   useEffect(() => {
     const storedData = fetchStorage('carts')
@@ -89,15 +89,19 @@ const Cart = () => {
               </button>
             </div>
             <div className='btn-payment'>
-              <button
-               
+              <Link
+               className='btn-payment-link'
+               to={'/oplata'}
+               onClick={() => setAllPayment(Object.values(data)
+                .reduce((acc, el) => acc + el.price * el.count, 0))
+               }
               >
-               Płacę <span>
+               Płacę:<span>
               {Object.values(data)
                 .reduce((acc, el) => acc + el.price * el.count, 0)
                 .toFixed(2)}{' '}PLN
                 </span>
-              </button>
+              </Link>
             </div>
             
           </div>

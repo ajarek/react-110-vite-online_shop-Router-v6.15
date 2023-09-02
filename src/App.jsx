@@ -4,8 +4,9 @@ export const AppContext = createContext()
 
 import Main from './layouts/Main/Main'
 import Home from './pages/Home/Home'
-import Error from './pages/Error/Error'
 import Cart from './pages/Cart/Cart';
+import Payment from './pages/Payment/Payment'
+import Error from './pages/Error/Error'
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,11 @@ const router = createBrowserRouter([
         element: <Cart />,
         errorElement: <Error />,
       },
+      {
+        path:'/oplata',
+        element: <Payment />,
+        errorElement: <Error />,
+      },
 
       
     ],
@@ -30,9 +36,10 @@ const router = createBrowserRouter([
 ])
 function App() {
   const [dataLength, setDataLength] = useState(0) 
+  const [allPayment, setAllPayment] = useState(0) 
   return (
     <div className='App'>
-      <AppContext.Provider value={{dataLength, setDataLength}}>
+      <AppContext.Provider value={{dataLength, setDataLength,allPayment, setAllPayment}}>
         <RouterProvider router={router} />
       </AppContext.Provider>
     </div>
