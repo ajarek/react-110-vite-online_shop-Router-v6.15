@@ -1,8 +1,7 @@
-import { useState, useEffect, useContext } from 'react'
+import { useEffect, useContext } from 'react'
 import { AppContext } from '../../App'
 import { MdDeleteForever } from 'react-icons/md'
 import {
-  saveStorage,
   saveStorageSingle,
   fetchStorage,
   deleteStorage,
@@ -11,8 +10,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import './Cart.css'
 
 const Cart = () => {
-  
-  const { dataLength, setDataLength, allPayment, setAllPayment,data, setData } = useContext(AppContext)
+  const { dataLength, setDataLength, setAllPayment, data, setData } =
+    useContext(AppContext)
   const navigate = useNavigate()
   useEffect(() => {
     const storedData = fetchStorage('carts')
@@ -70,7 +69,12 @@ const Cart = () => {
                   <td>{el.price.toFixed(2)}</td>
                   <td>{(el.price * el.count).toFixed(2)}</td>
                   <td>
-                    <button onClick={() => deleteCartItem(el.id)}><MdDeleteForever size={30} color='red'/></button>
+                    <button onClick={() => deleteCartItem(el.id)}>
+                      <MdDeleteForever
+                        size={30}
+                        color='red'
+                      />
+                    </button>
                   </td>
                 </tr>
               ))}
@@ -82,7 +86,6 @@ const Cart = () => {
                 onClick={() => {
                   deleteStorage('carts')
                   setDataLength(0)
-                 
                 }}
               >
                 Usuń Koszyk
@@ -90,20 +93,26 @@ const Cart = () => {
             </div>
             <div className='btn-payment'>
               <Link
-               className='btn-payment-link'
-               to={'/rejestracja'}
-               onClick={() => setAllPayment(Object.values(data)
-                .reduce((acc, el) => acc + el.price * el.count, 0))
-               }
+                className='btn-payment-link'
+                to={'/rejestracja'}
+                onClick={() =>
+                  setAllPayment(
+                    Object.values(data).reduce(
+                      (acc, el) => acc + el.price * el.count,
+                      0
+                    )
+                  )
+                }
               >
-               Płacę:<span>
-              {Object.values(data)
-                .reduce((acc, el) => acc + el.price * el.count, 0)
-                .toFixed(2)}{' '}PLN
+                Płacę:
+                <span>
+                  {Object.values(data)
+                    .reduce((acc, el) => acc + el.price * el.count, 0)
+                    .toFixed(2)}{' '}
+                  PLN
                 </span>
               </Link>
             </div>
-            
           </div>
         </>
       )}

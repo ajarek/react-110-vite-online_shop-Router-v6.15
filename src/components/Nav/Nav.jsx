@@ -1,4 +1,4 @@
-import { useState, useEffect,useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { AppContext } from '../../App'
 
 import { Link } from 'react-router-dom'
@@ -8,15 +8,15 @@ import './Nav.css'
 
 const Nav = () => {
   const [isOpen, setOpen] = useState(false)
- 
+
   const { dataLength, setDataLength } = useContext(AppContext)
   useEffect(() => {
-    const storedData = localStorage.getItem('carts');
+    const storedData = localStorage.getItem('carts')
     if (storedData) {
-      setDataLength(JSON.parse(storedData).length);
+      setDataLength(JSON.parse(storedData).length)
     }
-  }, []);
-  
+  }, [])
+
   return (
     <nav className='nav'>
       <Link
@@ -24,7 +24,10 @@ const Nav = () => {
         to={'/'}
       >
         <div className='img'>
-         <img src="/favicon.png"  alt="logo" />
+          <img
+            src='/favicon.png'
+            alt='logo'
+          />
         </div>
         <h1> Sklep Online</h1>
       </Link>
@@ -36,9 +39,7 @@ const Nav = () => {
         >
           🛒<sup>{dataLength}</sup>
         </Link>
-        
       </ul>
-     
     </nav>
   )
 }

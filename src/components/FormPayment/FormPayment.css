@@ -1,5 +1,5 @@
 .form-payment {
-  max-width:600px;
+  max-width: 600px;
   width: 100%;
   height: 100%;
   display: flex;
@@ -8,7 +8,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 15px;
-  box-shadow: 8px 8px 25px rgba(0,0,0,0.5);
+  box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.5);
   border-top: 1px solid var(--grey-dark);
   border-left: 1px solid var(--grey-dark);
   background-color: goldenrod;
@@ -76,7 +76,7 @@
     justify-content: flex-start;
     border-radius: 0px;
   }
-  
-  
-  
+
+
+
 }

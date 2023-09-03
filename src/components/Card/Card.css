@@ -8,51 +8,58 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
   text-align: center;
   background-color: var(--white);
 }
 
 .card-img {
- width: 250px;
- height: 200px;
+  width: 250px;
+  height: 200px;
 }
 
-.card-img img{
+.card-img img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  
+
 }
-.card .title{
+
+.card .title {
   font-weight: 500;
 }
-.card .price span{
+
+.card .price span {
   font-size: 1.1rem;
   font-weight: 600;
 }
-.card .btn button{
-width: 150px;
-height: 30px;
-background-color: var(--blue-light);
-color: var(--white);
-cursor: pointer;
-border: none;
-transition: all 0.3s ease-in-out;
+
+.card .btn button {
+  width: 150px;
+  height: 30px;
+  background-color: var(--blue-light);
+  color: var(--white);
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease-in-out;
 }
-.card .btn button:hover{
+
+.card .btn button:hover {
   background-color: var(--blue);
-  box-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
-.card .btn button:focus{
-  box-shadow: 0px 0px 0px rgba(0,0,0,0.5);
+
+.card .btn button:focus {
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
 }
+
 .counter {
   display: flex;
   align-items: center;
   margin-right: 1rem;
   margin-bottom: 0.5rem;
 }
+
 .counter button,
 .counter .count {
   width: 30px;
@@ -60,6 +67,7 @@ transition: all 0.3s ease-in-out;
   border: solid 1px rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
+
 .counter .count {
   display: flex;
   align-items: center;

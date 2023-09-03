@@ -1,21 +1,16 @@
 import './Registration.css'
-import { useState, useEffect, useContext } from 'react'
+import { useEffect, useContext } from 'react'
 import { AppContext } from '../../App'
 import { FormRegister } from './../../components/FormRegister/FormRegister'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Registration = () => {
- 
   const {
-    dataLength,
-    setDataLength,
-    allPayment,
-    setAllPayment,
     data,
-    setData,
-    dataPersonal, setDataPersonal
+    dataPersonal,
+    setDataPersonal,
   } = useContext(AppContext)
   const navigate = useNavigate()
 
@@ -28,7 +23,6 @@ const Registration = () => {
       data: [...data],
     }
     setDataPersonal(newDataPersonal)
-    
   }
   useEffect(() => {
     if (dataPersonal) {

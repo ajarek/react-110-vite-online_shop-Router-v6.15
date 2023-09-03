@@ -2,23 +2,21 @@ import { useState, useEffect, useContext } from 'react'
 import { FaCcVisa, FaCcMastercard } from 'react-icons/fa'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import {
-  saveStorage,
-  saveStorageSingle,
-  fetchStorage,
-  deleteStorage,
-} from './../../helpers/localStorage'
+import { saveStorage, deleteStorage } from './../../helpers/localStorage'
 import { Link, useNavigate } from 'react-router-dom'
 import { AppContext } from '../../App'
 import './Payment.css'
 import { FormPayment } from '../../components/FormPayment/FormPayment'
 const Payment = () => {
-  const { dataLength, setDataLength, allPayment, setAllPayment,dataPersonal, setDataPersonal } =
-    useContext(AppContext)
+  const {
+    setDataLength,
+    allPayment,
+
+    dataPersonal,
+    setDataPersonal,
+  } = useContext(AppContext)
   const [dataCard, setDataCard] = useState(null)
   const navigate = useNavigate()
-
-  
 
   const handleSubmit = (data) => {
     const newDataCard = {
@@ -26,17 +24,19 @@ const Payment = () => {
       cardNumber: data.cardNumber,
     }
     setDataCard(newDataCard)
-    saveStorage(dataPersonal,'admin-list')
-   
+    saveStorage(dataPersonal, 'admin-list')
   }
   useEffect(() => {
-    if(dataCard){
-    notifySuccess()
-    setDataLength(0)
-    setDataPersonal(null)
-     setTimeout(() => { navigate('/'); deleteStorage('carts')},5000)
+    if (dataCard) {
+      notifySuccess()
+      setDataLength(0)
+      setDataPersonal(null)
+      setTimeout(() => {
+        navigate('/')
+        deleteStorage('carts')
+      }, 5000)
     }
-  },[dataCard])
+  }, [dataCard])
 
   const notifySuccess = () => {
     toast.success(
@@ -84,7 +84,6 @@ const Payment = () => {
           <FormPayment
             onSubmit={handleSubmit}
             amount={allPayment.toFixed(2)}
-           
           />
         </>
       ) : (
