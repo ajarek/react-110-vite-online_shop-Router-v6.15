@@ -43,9 +43,11 @@ const router = createBrowserRouter([
 function App() {
   const [dataLength, setDataLength] = useState(0) 
   const [allPayment, setAllPayment] = useState(0) 
+  const [data, setData] = useState({})
+  const [dataPersonal, setDataPersonal] = useState(null)
   return (
     <div className='App'>
-      <AppContext.Provider value={{dataLength, setDataLength,allPayment, setAllPayment}}>
+      <AppContext.Provider value={{dataLength, setDataLength,allPayment, setAllPayment,data, setData,dataPersonal, setDataPersonal}}>
         <RouterProvider router={router} />
       </AppContext.Provider>
     </div>

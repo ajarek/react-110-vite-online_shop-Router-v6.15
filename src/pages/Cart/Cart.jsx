@@ -11,8 +11,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import './Cart.css'
 
 const Cart = () => {
-  const [data, setData] = useState({})
-  const { dataLength, setDataLength, allPayment, setAllPayment } = useContext(AppContext)
+  
+  const { dataLength, setDataLength, allPayment, setAllPayment,data, setData } = useContext(AppContext)
   const navigate = useNavigate()
   useEffect(() => {
     const storedData = fetchStorage('carts')

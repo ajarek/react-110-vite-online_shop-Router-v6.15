@@ -13,7 +13,7 @@ import { AppContext } from '../../App'
 import './Payment.css'
 import { FormPayment } from '../../components/FormPayment/FormPayment'
 const Payment = () => {
-  const { dataLength, setDataLength, allPayment, setAllPayment } =
+  const { dataLength, setDataLength, allPayment, setAllPayment,dataPersonal, setDataPersonal } =
     useContext(AppContext)
   const [dataCard, setDataCard] = useState(null)
   const navigate = useNavigate()
@@ -26,14 +26,14 @@ const Payment = () => {
       cardNumber: data.cardNumber,
     }
     setDataCard(newDataCard)
-    
+    saveStorage(dataPersonal,'admin-list')
    
   }
   useEffect(() => {
     if(dataCard){
     notifySuccess()
     setDataLength(0)
-    
+    setDataPersonal(null)
      setTimeout(() => { navigate('/'); deleteStorage('carts')},5000)
     }
   },[dataCard])

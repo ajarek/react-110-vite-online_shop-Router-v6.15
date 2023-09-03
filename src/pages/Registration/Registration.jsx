@@ -1,51 +1,61 @@
 import './Registration.css'
-import { useEffect,useState } from 'react';
-import { FormRegister } from './../../components/FormRegister/FormRegister';
+import { useState, useEffect, useContext } from 'react'
+import { AppContext } from '../../App'
+import { FormRegister } from './../../components/FormRegister/FormRegister'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { Link, useNavigate } from 'react-router-dom'
+
 const Registration = () => {
-  const [dataCard, setDataCard] = useState(null)
+ 
+  const {
+    dataLength,
+    setDataLength,
+    allPayment,
+    setAllPayment,
+    data,
+    setData,
+    dataPersonal, setDataPersonal
+  } = useContext(AppContext)
   const navigate = useNavigate()
 
-  const handleSubmit = (data) => {
-    const newDataCard = {
-      name: data.name,
-      email: data.email,
-      adres: data.adres,
-      phone: data.phone,
+  const handleSubmit = (personalData) => {
+    const newDataPersonal = {
+      name: personalData.name,
+      email: personalData.email,
+      adres: personalData.adres,
+      phone: personalData.phone,
+      data: [...data],
     }
-    setDataCard(newDataCard)
+    setDataPersonal(newDataPersonal)
     
-   
   }
   useEffect(() => {
-    if(dataCard){
-    notifySuccess()
-    
-    
-     setTimeout(() => { navigate('/oplata')},5000)
+    if (dataPersonal) {
+      notifySuccess()
+
+      setTimeout(() => {
+        navigate('/oplata')
+      }, 5000)
     }
-  },[dataCard])
+  }, [dataPersonal])
 
   const notifySuccess = () => {
-    toast.success(
-      `Dziękujemy za wpłatę ${dataCard.amount} PLN z karty ${dataCard.cardNumber}!`,
-      {
-        position: 'top-center',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'colored',
-      }
-    )
+    toast.success(` ${dataPersonal.name}! Dziękujemy za rejestracje!`, {
+      position: 'top-center',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'colored',
+    })
   }
+
   return (
     <div className='registration'>
-       <ToastContainer
+      <ToastContainer
         position='top-center'
         autoClose={5000}
         hideProgressBar={false}
@@ -59,7 +69,6 @@ const Registration = () => {
       />
       <h1>Rejestracja</h1>
       <FormRegister onSubmit={handleSubmit} />
-    
     </div>
   )
 }
