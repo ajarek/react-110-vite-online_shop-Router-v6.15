@@ -19,3 +19,9 @@
   gap: 8px;
   place-items: center;
 }
+@media (max-width:530px) {
+  .home{
+    padding: 90px 10px 10px 10px;
+    text-align: center;
+  }
+}

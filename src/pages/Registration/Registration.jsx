@@ -30,14 +30,14 @@ const Registration = () => {
 
       setTimeout(() => {
         navigate('/oplata')
-      }, 5000)
+      }, 2000)
     }
   }, [dataPersonal])
 
   const notifySuccess = () => {
     toast.success(` ${dataPersonal.name}! Dziękujemy za rejestracje!`, {
       position: 'top-center',
-      autoClose: 5000,
+      autoClose: 1000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -51,7 +51,7 @@ const Registration = () => {
     <div className='registration'>
       <ToastContainer
         position='top-center'
-        autoClose={5000}
+        autoClose={1000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick

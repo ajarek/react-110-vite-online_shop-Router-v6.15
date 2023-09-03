@@ -10,7 +10,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import './Cart.css'
 
 const Cart = () => {
-  const { dataLength, setDataLength, setAllPayment, data, setData } =
+  const { dataLength, setDataLength, setAllPayment, data, setData, setDataPersonal } =
     useContext(AppContext)
   const navigate = useNavigate()
   useEffect(() => {
@@ -85,6 +85,8 @@ const Cart = () => {
               <button
                 onClick={() => {
                   deleteStorage('carts')
+                  deleteStorage('admin-list')
+                  setDataPersonal(null)
                   setDataLength(0)
                 }}
               >

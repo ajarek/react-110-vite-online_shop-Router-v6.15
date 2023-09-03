@@ -31,6 +31,7 @@
 .cart-wrapper {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding: 0 32px;
@@ -82,4 +83,27 @@
 
 .btn-delete button:hover {
   background-color: var(--red);
+}
+
+@media (max-width:530px) {
+  .cart-wrapper {
+
+    height: 100px;
+    padding: 0 0px;
+    flex-direction: column;
+    align-items: center;
+
+
+  }
+
+  .cart-wrapper button,
+  .empty-cart button,
+  .btn-payment-link {
+    width: 250px;
+  }
+  @media (max-width:3765px) {
+    .cart td:nth-child(1), .cart th:nth-child(1){
+     display: none;
+    }
+  }
 }

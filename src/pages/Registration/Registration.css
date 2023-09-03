@@ -6,3 +6,8 @@
   align-items: center;
   padding: 90px 50px 50px 50px;
 }
+@media (max-width:530px) {
+  .registration{
+    padding: 90px 10px 10px 10px; ;
+  }
+}
