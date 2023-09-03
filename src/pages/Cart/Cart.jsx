@@ -91,7 +91,7 @@ const Cart = () => {
             <div className='btn-payment'>
               <Link
                className='btn-payment-link'
-               to={'/oplata'}
+               to={'/rejestracja'}
                onClick={() => setAllPayment(Object.values(data)
                 .reduce((acc, el) => acc + el.price * el.count, 0))
                }

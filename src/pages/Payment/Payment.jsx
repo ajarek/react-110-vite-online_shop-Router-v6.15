@@ -15,7 +15,7 @@ import { FormPayment } from '../../components/FormPayment/FormPayment'
 const Payment = () => {
   const { dataLength, setDataLength, allPayment, setAllPayment } =
     useContext(AppContext)
-  const [dataCard, setDataCard] = useState()
+  const [dataCard, setDataCard] = useState(null)
   const navigate = useNavigate()
 
   
@@ -26,12 +26,17 @@ const Payment = () => {
       cardNumber: data.cardNumber,
     }
     setDataCard(newDataCard)
+    
+   
+  }
+  useEffect(() => {
+    if(dataCard){
     notifySuccess()
-    setAllPayment(0)
     setDataLength(0)
     
-    //  setTimeout(() => { navigate('/'); deleteStorage('carts')},5000)
-  }
+     setTimeout(() => { navigate('/'); deleteStorage('carts')},5000)
+    }
+  },[dataCard])
 
   const notifySuccess = () => {
     toast.success(
@@ -79,6 +84,7 @@ const Payment = () => {
           <FormPayment
             onSubmit={handleSubmit}
             amount={allPayment.toFixed(2)}
+           
           />
         </>
       ) : (

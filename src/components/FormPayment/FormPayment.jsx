@@ -106,6 +106,7 @@ export const FormPayment = ({ onSubmit, amount }) => {
         <input
           type='submit'
           value='Płacę'
+          
         />
       </div>
     </form>
