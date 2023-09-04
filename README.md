@@ -1,8 +1,8 @@
 # react-110-vite-online_shop-Router-v6.15
 
 
-#### Technologies used: react, useEfect.
-#### Hooks used: react-router-dom, react-hook-form, @hookform/resolvers, yup, react-icons, react-motion-animate, hamburger-react.
+#### Technologies used: react, react-router-dom, react-hook-form, @hookform/resolvers, yup, react-icons, react-toastify, hamburger-react, localStorage.
+#### Hooks used: useState, useContext, useEfect.
 ## Setup:
 * npm install
 * start: npm run dev
